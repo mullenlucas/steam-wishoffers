@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { apiKey, mySteamUserID } from '../../apiKey';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { mySteamUserID } from '../../apiKey';
 
 // Actions
 const FETCH_WISHLIST = 'steam-data/getWishList/FETCH_WISHLIST';
