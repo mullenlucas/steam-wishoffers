@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import wishlistReducer from './wishlistGames';
+// import wishlistReducer from './wishlistGames';
+import appNewsReducer from './appInfos';
 
 const store = configureStore({
   reducer: {
-    wishlist: wishlistReducer,
+    // wishlist: wishlistReducer,
+    appnews: appNewsReducer,
   },
 });
 

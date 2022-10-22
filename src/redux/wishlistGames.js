@@ -3,24 +3,21 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { mySteamUserID } from '../../apiKey';
 
 // Actions
-const FETCH_WISHLIST = 'steam-data/getWishList/FETCH_WISHLIST';
+const FETCH_WISHLIST = 'steam-data/FETCH_WISHLIST';
 
 const userWishlistUrl = `https://store.steampowered.com/wishlist/profiles/${mySteamUserID}/wishlistdata/`;
 const wishlistInitialState = [];
 
-const getWishList = createAsyncThunk('steam-data/getWishList', async () => {
+const getWishlist = createAsyncThunk(FETCH_WISHLIST, async () => {
   const response = await axios.get(userWishlistUrl);
   return response.data;
 });
 
-// const wishListSlice = createSlice({
-//   name: 'wishlist',
-//   initialState: wishlistInitialState
-// })
-
 const wishlistReducer = (state = wishlistInitialState, action) => {
   switch (action.type) {
-    case FETCH_WISHLIST:
+    case `${FETCH_WISHLIST}/pending`:
+      return [];
+    case `${FETCH_WISHLIST}/fulfilled`:
       return action.payload;
     default:
       return state;
@@ -29,4 +26,4 @@ const wishlistReducer = (state = wishlistInitialState, action) => {
 
 export default wishlistReducer;
 
-export { getWishList };
+export { getWishlist };
